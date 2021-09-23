@@ -1,0 +1,124 @@
+h1{
+    color: rgb(235, 183, 12);
+    text-shadow: 3px 2px 4px #ff0000;
+    text-align: center;
+}
+
+nav{
+    background-color: rgb(0, 0, 0);
+}
+
+#hugeContainer{
+    border:4px solid rgb(255, 196, 0);
+    border-radius: 8px;
+    margin-right: 190px;
+    padding-right: 80px;
+    padding-left: 70px;
+    margin-left: 100px;
+    
+}
+
+
+#container{
+    /* border: 2px solid green; */
+    height: 550px;
+    width: 13%;
+    margin: 4px;
+    display: inline-block;
+    
+}
+
+#containertwo{
+    /* border: 2px solid green; */
+    height: 550px;
+    width: 13%;
+    margin:4px;
+    display: inline-block;
+}
+
+#containerthree{
+    /* border: 2px solid green; */
+    height: 550px;
+    width: 13%;
+    margin:4px;
+    display: inline-block;
+}
+
+#containerfour{
+    /* border: 2px solid green; */
+    height: 550px;
+    width: 13%;
+    margin:4px;
+    display: inline-block;
+}
+
+#containerfive{
+    /* border: 2px solid green; */
+    height: 550px;
+    width: 13%;
+    margin:4px;
+    display: inline-block;
+}
+
+#containersix{
+    /* border: 2px solid rgb(255, 255, 255); */
+    height: 550px;
+    width: 12%;
+    margin:4px;
+    display: inline-block;
+}
+
+#containerseven{
+    /* border: 2px solid green; */
+    height: 550px;
+    width: 12%;
+    margin:4px;
+    display: inline-block;
+}
+
+.space{
+    border:1px solid rgb(24, 6, 102);
+    border-radius: 80px;
+    padding: 35px;
+    margin: 14px;
+    margin-left:22px;
+    width: 50%;
+    cursor: pointer;
+    box-shadow: 5px 5px 8px 3px #888888;
+}
+
+.filled{
+    /* background-color: red !important; */
+    background-image: linear-gradient(to right, red , rgb(201, 91, 2)) !important;
+}
+
+.filledtwo{
+    /* background-color: red !important; */
+    background-image: linear-gradient(to right, yellow , rgb(199, 155, 11)) !important;
+}
+
+/* .space:hover{
+    background-color: rgb(165, 160, 211);
+} */
+
+#container:hover{
+    background-color: rgb(165, 160, 211);
+}
+#containertwo:hover{
+    background-color: rgb(165, 160, 211);
+}
+#containerthree:hover{
+    background-color: rgb(165, 160, 211);
+}
+#containerfour:hover{
+    background-color: rgb(165, 160, 211);
+}
+#containerfive:hover{
+    background-color: rgb(165, 160, 211);
+}
+#containersix:hover{
+    background-color: rgb(165, 160, 211);
+}
+#containerseven:hover{
+    background-color: rgb(165, 160, 211);
+}
