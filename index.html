@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="game.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <nav>
+        <h1><i>Connect Four</i> <h1>Turn: <span id="turn"> p1</span></h1> </h1>
+    </nav>
+
+    <div id="hugeContainer">
+
+        <div id="container" class="roww" arrdata="35">
+            <div class="space" data='1' row='0'></div>
+            <div class="space" data='1' row='7'></div>
+            <div class="space" data='1' row='14'></div>
+            <div class="space" data='1' row='21'></div>
+            <div class="space" data='1' row='28'></div>
+            <div class="space" data='1' row='35'></div>
+        </div>
+
+        <div id="containertwo" class="roww" arrdata="36">
+            <div class="space" data='2' row='1'></div>
+            <div class="space" data='2' row='8'></div>
+            <div class="space" data='2' row='15'></div>
+            <div class="space" data='2' row='22'></div>
+            <div class="space" data='2' row='29'></div>
+            <div class="space" data='2' row='36'></div>
+        </div>
+
+        <div id="containerthree" class="roww" arrdata="37">
+            <div class="space" data='3' row='2'></div>
+            <div class="space" data='3' row='9'></div>
+            <div class="space" data='3' row='16'></div>
+            <div class="space" data='3' row='23'></div>
+            <div class="space" data='3' row='30'></div>
+            <div class="space" data='3' row='37'></div>
+        </div>
+
+        <div id="containerfour" class="roww" arrdata="38">
+            <div class="space" data='4' row='3'></div>
+            <div class="space" data='4' row='10'></div>
+            <div class="space" data='4' row='17'></div>
+            <div class="space" data='4' row='24'></div>
+            <div class="space" data='4' row='31'></div>
+            <div class="space" data='4' row='38'></div>
+        </div>
+
+        <div id="containerfive" class="roww" arrdata="39">
+            <div class="space" data='5' row='4'></div>
+            <div class="space" data='5' row='11'></div>
+            <div class="space" data='5' row='18'></div>
+            <div class="space" data='5' row='25'></div>
+            <div class="space" data='5' row='32'></div>
+            <div class="space" data='5' row='39'></div>
+        </div>
+        <div id="containersix" class="roww" arrdata="40">
+            <div class="space" data='6' row='5'></div>
+            <div class="space" data='6' row='12'></div>
+            <div class="space" data='6' row='19'></div>
+            <div class="space" data='6' row='26'></div>
+            <div class="space" data='6' row='33'></div>
+            <div class="space" data='6' row='40'></div>
+        </div>
+        <div id="containerseven" class="roww" arrdata="41">
+            <div class="space" data='7' row='6'></div>
+            <div class="space" data='7' row='13'></div>
+            <div class="space" data='7' row='20'></div>
+            <div class="space" data='7' row='27'></div>
+            <div class="space" data='7' row='34'></div>
+            <div class="space" data='7' row='41'></div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+       
+        let gamewon = false;
+        let row;
+        let playerTurn = 'p1';
+        let arr = [
+            null, null, null, null, null, null, null,
+            null, null, null, null, null, null, null,
+            null, null, null, null, null, null, null,
+            null, null, null, null, null, null, null,
+            null, null, null, null, null, null, null,
+            null, null, null, null, null, null, null,
+        ]
+
+        //dropping a piece in
+        $(".roww").on("click", function () {
+            //determine player turn
+            setTimeout(function () {
+
+                if(gamewon == true){
+                    $(".roww").css("pointer-events","none")
+                    return;
+                }
+            playerTurn == "p2" ? playerTurn = "p1" : playerTurn = "p2";
+            $("#turn").html(playerTurn)
+        }, 100);
+
+
+            row = parseInt($(this).attr('arrdata'))
+
+            for (let h = row; h > -1; h -= 7) {
+                if (arr[h] == null) {
+                    arr[h] = playerTurn;
+
+                    if (playerTurn == "p1") {
+                        $(`[row='${h}']`).css("background-color", "red")
+                    } else {
+                        $(`[row='${h}']`).css("background-color", "yellow")
+                    }
+                    break;
+                }
+            }
+            //diagonal top right to bottom left
+
+            setTimeout(function () {
+
+                for (var i = 6; i > 0; i--) {
+
+                    if (arr[i] == playerTurn && arr[i + 6] == playerTurn && arr[i + 12] == playerTurn && arr[i + 18] == playerTurn) {
+                        $("#turn").html(playerTurn + " is the winner")
+                        $(`[row='${i}']`).css("border" ,"4px solid lime")
+                        $(`[row='${i + 6}']`).css("border" ,"4px solid lime")
+                        $(`[row='${i + 12}']`).css("border" ,"4px solid lime")
+                        $(`[row='${i + 18}']`).css("border" ,"4px solid lime")
+                        gamewon = true;
+                        //break;
+                    }
+                    if (i == 3 || i == 10 || i == 17) {
+                        i += 10
+                    }
+                    //looks like redundant code but for some reason it wasnt checking all pieces when this loop only runs once
+                    if (arr[i] == playerTurn && arr[i + 6] == playerTurn && arr[i + 12] == playerTurn && arr[i + 18] == playerTurn) {
+                        $("#turn").html(playerTurn + " is the winner")
+                        $(`[row='${i}']`).css("border" ,"4px solid lime")
+                        $(`[row='${i + 6}']`).css("border" ,"4px solid lime")
+                        $(`[row='${i + 12}']`).css("border" ,"4px solid lime")
+                        $(`[row='${i + 18}']`).css("border" ,"4px solid lime")
+                        gamewon = true;
+                        //break;
+                    }
+                    if (i == 26) {
+                        break;
+                    }
+                }
+            }, 80);
+            //diagonal top left to bottom right
+            setTimeout(function () {
+
+                for (var j = 0; j < arr.length; j++) {
+
+                    if (arr[j] == playerTurn && arr[j + 8] == playerTurn && arr[j + 16] == playerTurn && arr[j + 24] == playerTurn) {
+                        $("#turn").html(playerTurn + " is the winner")
+                        $(`[row='${j}']`).css("border" ,"4px solid lime")
+                        $(`[row='${j + 8}']`).css("border" ,"4px solid lime")
+                        $(`[row='${j + 16}']`).css("border" ,"4px solid lime")
+                        $(`[row='${j + 24}']`).css("border" ,"4px solid lime")
+                        
+                        
+                        gamewon = true;
+                        //break;
+                    }
+                    if (j == 3 || j == 10 || j == 17 || j == 24 || j == 31 || j == 38) {
+                        j += 3
+                    }
+                    if (arr[j] == playerTurn && arr[j + 8] == playerTurn && arr[j + 16] == playerTurn && arr[j + 24] == playerTurn) {
+                        $("#turn").html(playerTurn + " is the winner")
+                        $(`[row='${j}']`).css("border" ,"4px solid lime")
+                        $(`[row='${j + 8}']`).css("border" ,"4px solid lime")
+                        $(`[row='${j + 16}']`).css("border" ,"4px solid lime")
+                        $(`[row='${j + 24}']`).css("border" ,"4px solid lime")
+                      
+                        gamewon = true;
+                       // break;
+                    }
+                }
+            }, 85);
+            //vertical
+            setTimeout(function () {
+
+                for (var k = 0; k < arr.length; k++) {
+
+                    if (arr[k] == playerTurn && arr[k + 7] == playerTurn && arr[k + 14] == playerTurn && arr[k + 21] == playerTurn) {
+                       $("#turn").html(playerTurn + " is the winner")
+                        $(`[row='${k}']`).css("border" ,"4px solid lime")
+                        $(`[row='${k + 7}']`).css("border" ,"4px solid lime")
+                        $(`[row='${k + 14}']`).css("border" ,"4px solid lime")
+                        $(`[row='${k + 21}']`).css("border" ,"4px solid lime")
+                        
+                        gamewon = true;
+                       // break;
+                    }
+                }
+
+            }, 90);
+
+            //horizontal matches
+            setTimeout(function () {
+
+                for (var l = 0; l < arr.length; l++) {
+               
+                    if (arr[l] == playerTurn && arr[l + 1] == playerTurn && arr[l + 2] == playerTurn && arr[l + 3] == playerTurn) {
+                        $("#turn").html(playerTurn + " is the winner")
+                        $(`[row='${l}']`).css("border" ,"4px solid lime")
+                        $(`[row='${l + 1}']`).css("border" ,"4px solid lime")
+                        $(`[row='${l + 2}']`).css("border" ,"4px solid lime")
+                        $(`[row='${l + 3}']`).css("border" ,"4px solid lime")
+                        gamewon = true;
+                        //break;
+                    }
+
+                    if (l == 3 || l == 10 || l == 17 || l == 24 || l == 31 || l == 38) {
+                        l += 3
+                    }
+
+                    if (arr[l] == playerTurn && arr[l + 1] == playerTurn && arr[l + 2] == playerTurn && arr[l + 3] == playerTurn) {
+                        $("#turn").html(playerTurn + " is the winner")
+                        $(`[row='${l}']`).css("border" ,"4px solid lime")
+                        $(`[row='${l + 1}']`).css("border" ,"4px solid lime")
+                        $(`[row='${l + 2}']`).css("border" ,"4px solid lime")
+                        $(`[row='${l + 3}']`).css("border" ,"4px solid lime")
+                        gamewon = true;
+                        //break;
+                    }
+                }
+            }, 95);
+        });
+    </script>
+
+</body>
+
+</html>
